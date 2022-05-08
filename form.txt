@@ -1,373 +1,1163 @@
 <ul>
-                        <li>
-                            <div class="text">
-                                <span>今日日期 Date<i style="display: none;" class="icon iconfont icon-shuoming"></i></span>
-                                <input v-model="date" readonly type="text" placeholder=""></div>
-                        </li>
-                        <li>
-                            <div class="text">
-                                <span>姓名 Name<i style="display: none;" class="icon iconfont icon-shuoming"></i></span>
-                                <input v-model="realname" readonly type="text" placeholder=""></div>
-                        </li>
-                        <li>
-                            <div class="text">
-                                <span>学工号 Student/Staff ID No.<i style="display: none;" class="icon iconfont icon-shuoming"></i></span>
-                                <input v-model="number" readonly type="text" placeholder=""></div>
-                        </li>
+                            <li>
+                                <div class="text">
+                                    <span>今日日期 Date<i style="display: none;" class="icon iconfont icon-shuoming"></i></span>
+                                    <input v-model="date" readonly type="text" placeholder=""></div>
+                            </li>
+                            <li>
+                                <div class="text">
+                                    <span>姓名 Name<i style="display: none;" class="icon iconfont icon-shuoming"></i></span>
+                                    <input v-model="realname" readonly type="text" placeholder=""></div>
+                            </li>
+                            <li>
+                                <div class="text">
+                                    <span>学工号 Student/Staff ID No.<i style="display: none;" class="icon iconfont icon-shuoming"></i></span>
+                                    <input v-model="number" readonly type="text" placeholder=""></div>
+                            </li>
 
-                        <li>
-                            <div name="sfyxjzxgym" class="radio"><span>是否意向接种?<i class="icon iconfont icon-shuoming"></i><em></em></span>
-                                <div>
-                                    <div @click="info.sfyxjzxgym=1"><span :class="{active: info.sfyxjzxgym==1}"><i></i></span> <span>是 Yes</span></div>
-                                    <div @click="info.sfyxjzxgym=0"><span :class="{active: (info.sfyxjzxgym===0 || info.sfyxjzxgym==='0')}"><i></i></span> <span>否 No</span></div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div name="sfbyjzrq" class="radio"><span>是否是不宜接种人群?<i class="icon iconfont icon-shuoming"></i><em></em></span>
-                                <div>
-                                    <div @click="info.sfbyjzrq=1"><span :class="{active: info.sfbyjzrq==1}"><i></i></span> <span>对疫苗成分过敏</span></div>
-                                    <div @click="info.sfbyjzrq=2"><span :class="{active: info.sfbyjzrq==2}"><i></i></span> <span>患急性疾病者</span></div>
-                                    <div @click="info.sfbyjzrq=3"><span :class="{active: info.sfbyjzrq==3}"><i></i></span> <span>处于慢性疾病的急性发作期者</span></div>
-                                    <div @click="info.sfbyjzrq=4"><span :class="{active: info.sfbyjzrq==4}"><i></i></span> <span>妊娠期妇女</span></div>
-                                    <div @click="info.sfbyjzrq=5"><span :class="{active: info.sfbyjzrq==5}"><i></i></span> <span>否</span></div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div name="jzxgymqk" class="radio"><span>当前接种情况<i class="icon iconfont icon-shuoming"></i><em></em></span>
-                                <div>
-                                    <div @click="info.jzxgymqk=1"><span :class="{active: info.jzxgymqk==1}"><i></i></span> <span>已接种第一针</span></div>
-<!--                                    <div @click="info.jzxgymqk=2"><span :class="{active: info.jzxgymqk==2}"><i></i></span> <span>已完成接种</span></div>-->
-                                    <div @click="info.jzxgymqk=4"><span :class="{active: info.jzxgymqk==4}"><i></i></span> <span>已接种第二针（已满6个月）</span></div>
-                                    <div @click="info.jzxgymqk=5"><span :class="{active: info.jzxgymqk==5}"><i></i></span> <span>已接种第二针（未满6个月）</span></div>
-                                    <div @click="info.jzxgymqk=6"><span :class="{active: info.jzxgymqk==6}"><i></i></span> <span>已接种第三针</span></div>
-                                    <div @click="info.jzxgymqk=3"><span :class="{active: info.jzxgymqk==3}"><i></i></span> <span>未接种</span></div>
-                                </div>
-                            </div>
-                        </li>
-
-
-                        <li>
-                            <div name="sffrqjwdg" class="radio"><span>今日是否因发热请假未到岗（教职工）或未返校（学生）？ Are you on leave due to fever?<i class="icon iconfont icon-shuoming"></i><em></em></span>
-                                <div>
-                                    <div @click="info.sffrqjwdg=1"><span :class="{active: info.sffrqjwdg==1}"><i></i></span> <span>是 Yes</span></div>
-                                    <div @click="info.sffrqjwdg=0"><span :class="{active: (info.sffrqjwdg===0 || info.sffrqjwdg==='0')}"><i></i></span> <span>否 No</span></div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div name="sfqtyyqjwdg" class="radio"><span>今日是否因发热外的其他原因请假未到岗（教职工）或未返校（学生）？ Are you on leave due to other symptoms except fever?<i class="icon iconfont icon-shuoming"></i><em></em></span>
-                                <div>
-                                    <div @click="info.sfqtyyqjwdg=1"><span :class="{active: info.sfqtyyqjwdg==1}"><i></i></span> <span>是 Yes</span></div>
-                                    <div @click="info.sfqtyyqjwdg=0"><span :class="{active: (info.sfqtyyqjwdg===0 || info.sfqtyyqjwdg==='0')}"><i></i></span> <span>否 No</span></div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div name="tw" class="radio"><span>今日是否有发热症状（高于37.2 ℃）？ Do you have a fever(above 37.2℃) today?<i class="icon iconfont icon-shuoming"></i><em></em></span>
-                                <div>
-
-                                    <div @click="info.tw='1'"><span :class="{active: info.tw==='1'}"><i></i></span> <span>是 Yes</span></div>
-                                    <div @click="info.tw='0'"><span :class="{active: info.tw==='0'}"><i></i></span> <span>否 No</span></div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div name="sfyqjzgc" class="radio"><span>今日是否被当地管理部门要求在集中隔离点医学观察？ Have you been isolated by the local authorities at centralized isolation point for medical observation today?<i class="icon iconfont icon-shuoming"></i><em></em></span>
-                                <div>
-                                    <div @click="info.sfyqjzgc=1"><span :class="{active: info.sfyqjzgc==1}"><i></i></span> <span>是 Yes</span></div>
-                                    <div @click="info.sfyqjzgc=0"><span :class="{active: info.sfyqjzgc==0}"><i></i></span> <span>否 No</span></div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div name="sfcyglq" class="radio"><span @click="titlebtn()">今日是否居家隔离观察（居家非隔离状态填否）? Have you been in self-isolation at home today (select No if you are just stay at home but not isolated)?<i class="icon iconfont icon-shuoming"></i><em>（点击查看居家隔离观察定义 click to read the definition of it）</em></span>
-                                <div>
-                                    <div @click="info.sfcyglq=1"><span :class="{active: info.sfcyglq==1}"><i></i></span> <span>是 Yes</span></div>
-                                    <div @click="info.sfcyglq=0"><span :class="{active: info.sfcyglq==0}"><i></i></span> <span>否 No</span></div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li v-if="info.sfcyglq==1">
-                            <div class="text">
-                                <span>观察开始时间 The start time<i class="icon iconfont icon-shuoming"></i></span>
-                                <input name="glksrq" v-model="info.glksrq" type="date" placeholder=""></div>
-                        </li>
-
-
-
-
-                        <li>
-                            <div name="sfcxzysx" class="radio"><span>是否有任何与疫情相关的，值得注意的情况？ Do you have any situation related to the epidemic that deserves attention?<i class="icon iconfont icon-shuoming"></i><em></em></span>
-                                <div>
-                                    <div @click="info.sfcxzysx=1"><span :class="{active: info.sfcxzysx==1}"><i></i></span> <span>是 Yes</span></div>
-                                    <div @click="info.sfcxzysx=0"><span :class="{active: info.sfcxzysx==0}"><i></i></span> <span>否 No</span></div>
-                                </div>
-                            </div>
-                        </li>
-                        <li v-if="info.sfcxzysx==1">
-                            <div class="multiText"><span>情况说明 Situation explanation<i class="icon iconfont icon-shuoming"></i></span>
-                                <div><textarea v-model="info.qksm" name="qksm" rows="" cols="" placeholder=""></textarea></div>
-                            </div>
-                        </li>
-                        <li v-if="info.sfcxzysx==1">
-                            <div class="multiText"><span>其他信息 Other information<i style="display: none;" class="icon iconfont icon-shuoming"></i></span>
-                                <div><textarea v-model="info.remark" name="remark" rows="" cols="" placeholder=""></textarea></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div name="campus" class="radio"><span>所在校区 Campus<i class="icon iconfont icon-shuoming"></i><em></em></span>
-                                <div>
-                                    <div @click="info.campus='紫金港校区'"><span :class="{active: info.campus==='紫金港校区'}"><i></i></span> <span>紫金港校区</span></div>
-                                    <div @click="info.campus='玉泉校区'"><span :class="{active: info.campus==='玉泉校区'}"><i></i></span> <span>玉泉校区</span></div>
-                                    <div @click="info.campus='西溪校区'"><span :class="{active: info.campus==='西溪校区'}"><i></i></span> <span>西溪校区</span></div>
-                                    <div @click="info.campus='华家池校区'"><span :class="{active: info.campus==='华家池校区'}"><i></i></span> <span>华家池校区</span></div>
-                                    <div @click="info.campus='之江校区'"><span :class="{active: info.campus==='之江校区'}"><i></i></span> <span>之江校区</span></div>
-                                    <div @click="info.campus='海宁校区'"><span :class="{active: info.campus==='海宁校区'}"><i></i></span> <span>海宁校区</span></div>
-                                    <div @click="info.campus='舟山校区'"><span :class="{active: info.campus==='舟山校区'}"><i></i></span> <span>舟山校区</span></div>
-                                    <div @click="info.campus='宁波校区'"><span :class="{active: info.campus==='宁波校区'}"><i></i></span> <span>宁波校区</span></div>
-                                    <div @click="info.campus='工程师学院'"><span :class="{active: info.campus==='工程师学院'}"><i></i></span> <span>工程师学院</span></div>
-                                    <div @click="info.campus='杭州国际科创中心'"><span :class="{active: info.campus==='杭州国际科创中心'}"><i></i></span> <span>杭州国际科创中心</span></div>
-                                    <div @click="info.campus='其他'"><span :class="{active: info.campus==='其他'}"><i></i></span> <span>其他</span></div>
-                                </div>
-                            </div>
-                        </li>
-                         <li>
-                                <div name="sfsqhzjkk" class="radio"><span>是否已经申领校区所在地健康码？Have you got the health code of the city where the campus is located？<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                            <li>
+                                <div name="sfzx" class="radio"><span>今日是否在校？ Are you on campus today?<i class="icon iconfont icon-shuoming"></i><em></em></span>
                                     <div>
-                                        <div @click="info.sfsqhzjkk='1'"><span :class="{active: info.sfsqhzjkk==='1'}"><i></i></span> <span>是 Yes</span></div>
-                                        <div @click="info.sfsqhzjkk='0'"><span :class="{active: info.sfsqhzjkk==='0'}"><i></i></span> <span>否 No</span></div>
+                                        <div @click="setSfzx('1')"><span :class="{active: info.sfzx==='1'}"><i></i></span> <span>是 Yes</span></div>
+                                        <div @click="setSfzx('0')"><span :class="{active: info.sfzx==='0'}"><i></i></span> <span>否 No</span></div>
                                     </div>
                                 </div>
                             </li>
-                             <li v-if="info.sfsqhzjkk==1">
-                                <div name="sqhzjkkys" class="radio"><span>今日申领校区所在地健康码的颜色？What's the color of today's health code？<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                            <li v-show="info.sfzx === '1'">
+                                <div name="campus" class="radio"><span>所在校区 Campus<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                    <div>
+                                        <div @click="info.campus='紫金港校区'"><span :class="{active: info.campus==='紫金港校区'}"><i></i></span> <span>紫金港校区 Zijingang </span></div>
+                                        <div @click="info.campus='玉泉校区'"><span :class="{active: info.campus==='玉泉校区'}"><i></i></span> <span>玉泉校区 Yuquan </span></div>
+                                        <div @click="info.campus='西溪校区'"><span :class="{active: info.campus==='西溪校区'}"><i></i></span> <span>西溪校区 Xixi </span></div>
+                                        <div @click="info.campus='华家池校区'"><span :class="{active: info.campus==='华家池校区'}"><i></i></span> <span>华家池校区 Huajiachi </span></div>
+                                        <div @click="info.campus='之江校区'"><span :class="{active: info.campus==='之江校区'}"><i></i></span> <span>之江校区 Zhijiang </span></div>
+                                        <div @click="info.campus='海宁校区'"><span :class="{active: info.campus==='海宁校区'}"><i></i></span> <span>海宁校区 Haining </span></div>
+                                        <div @click="info.campus='舟山校区'"><span :class="{active: info.campus==='舟山校区'}"><i></i></span> <span>舟山校区 Zhoushan </span></div>
+                                        <div @click="info.campus='宁波校区'"><span :class="{active: info.campus==='宁波校区'}"><i></i></span> <span>宁波校区 Ningbo </span></div>
+                                        <div @click="info.campus='工程师学院'"><span :class="{active: info.campus==='工程师学院'}"><i></i></span> <span>工程师学院 Polytechnic Institute </span></div>
+                                        <div @click="info.campus='杭州国际科创中心'"><span :class="{active: info.campus==='杭州国际科创中心'}"><i></i></span> <span>杭州国际科创中心 Hangzhou-ZJU Global Scientific and Technological Innovation Center</span></div>
+                                        <div @click="info.campus='其他'"><span :class="{active: info.campus==='其他'}"><i></i></span> <span>其他 Others </span></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li v-show="info.sfzx==='0'">
+                                <div name="sfzgn" class="radio"><span>是否在境外 Are you now outside of China?<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                    <div>
+                                        <div @click="setSfzgn(0)"><span :class="{active: sfzgn==0}"><i></i></span> <span>是 Yes</span></div>
+                                        <div @click="setSfzgn(1)"><span :class="{active: sfzgn==1}"><i></i></span> <span>否 No</span></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li v-if="info.sfzx==='0'">
+                                <div name="sfymqjczrj" class="radio"><span>同住人员当天是否存在发热症状、红黄码状态或者14天内从境外返校情况。Do the people living with you have a fever, or their health code turned red or yellow, or will the people living with you return from abroad within 14 days?<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                    <div>
+                                        <div @click="info.sfymqjczrj=1"><span :class="{active: info.sfymqjczrj==1}"><i></i></span> <span>是 Yes</span></div>
+                                        <div @click="info.sfymqjczrj=0"><span :class="{active: (info.sfymqjczrj===0 || info.sfymqjczrj === '0')}"><i></i></span> <span>否 No</span></div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li v-if="info.sfzx==='0' && sfzgn== 1">
+                                <div name="ismoved" class="radio"><span>今日是否有离开校区所在城市的外出安排。Are you planning to leave the city of your campus today?<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                    <div>
+                                        <div @click="info.ismoved=2"><span :class="{active: info.ismoved==2}"><i></i></span> <span>离市 Leaving the City</span></div>
+                                        <div @click="info.ismoved=3"><span :class="{active: info.ismoved==3}"><i></i></span> <span>离省 Leaving the Province</span></div>
+                                        <div @click="info.ismoved=4"><span :class="{active: info.ismoved==4}"><i></i></span> <span>出境 Leaving China</span></div>
+                                        <div @click="info.ismoved=5"><span :class="{active: info.ismoved==5}"><i></i></span> <span>无 No</span></div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+                            <li v-show="info.sfzx==='0' && !ipCtrl1 && sfzgn == 0" name="dwszgj">
+                                <div class="text" @click="mapInit()">
+                                    <span>所在地点（请打开手机位置功能，并在手机权限设置中选择允许访问位置信息）Your location (Please turn on the location access function on your mobile phone and allow App to access your location)<i class="icon iconfont icon-shuoming"></i></span>
+                                    <input name="szgjcs" v-model="info.szgjcs" readonly type="text" placeholder="点击获取地理位置(Click to get your location)"></div>
+                            </li>
+                            <li v-show="info.sfzx==='0' && ipCtrl1 && sfzgn == 0">
+                                <div class="text">
+                                    <div class="hcqbtn-wrap">
+                                        <select class="hcqbtn" name="szgj" id="szgj">
+                                            <option value="">请选择所在地区/国家</option>
+                                            <option v-for='p in country' :value="p.name">{{p.name}} {{p.ename}}</option>
+                                        </select>
+                                        <input v-model="info.gwszgzcs" type="text" placeholder="所在城市 City" class="hcqbtn" name="gwszgzcs">
+
+                                    </div>
+                                </div>
+                            </li>
+                            <li v-show="!ipCtrl && sfzgn == 1">
+                                <div name="area" class="text" style="cursor: pointer" @click="getLocation()">
+                                    <span>所在地点（请打开手机位置功能，并在手机权限设置中选择允许访问位置信息）Your location (Please turn on the location access function on your mobile phone and allow App to access your location)<i class="icon iconfont icon-shuoming"></i></span>
+                                    <input v-model="info.area" readonly type="text" placeholder="点击获取地理位置 Click to get geographic location"></div>
+                            </li>
+
+                            <li v-show="info.sfzx==='0' && sfzgn == 0">
+                                <div class="multiText"><span>近14日到访过的国家/地区 Countries you've visited over the past 14 days<i class="icon iconfont icon-shuoming"></i></span>
+                                    <div><textarea v-model="info.zjdfgj" name="zjdfgj" rows="" cols="" placeholder="多个用逗号隔开（如德国，荷兰）separate by commas if more than one country (eg: Germany, Netherlands)"></textarea></div>
+                                </div>
+                            </li>
+                            <li v-show="info.sfzx==='0' && sfzgn == 0">
+                                <div name="sfyrjjh" class="radio"><span>未来14天内是否有入境计划? Do you have plan to enter Chinese Mainland in the next 14 days?<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                    <div>
+                                        <div @click="info.sfyrjjh=1"><span :class="{active: info.sfyrjjh==1}"><i></i></span> <span>是 Yes</span></div>
+                                        <div @click="info.sfyrjjh=0"><span :class="{active: info.sfyrjjh==0}"><i></i></span> <span>否 No</span></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li v-show="info.sfzx==='0' && sfzgn == 0 && info.sfyrjjh == 1">
+                                <div name="cfgj" class="text">
+                                    <span>出发国家或地区 Departure country or region?<i class="icon iconfont icon-shuoming"></i></span>
+                                    <div>
+                                        <select class="hcqbtn" v-model='info.cfgj' name="cfgj" id="cfgj" style="display: block;width: 100%;">
+                                            <option value="">请选择国家或地区 Scroll down to select country or region</option>
+                                            <option v-for='p in country' :value="p.name">{{p.name}} {{p.ename}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li v-show="info.sfzx==='0' && sfzgn == 0 && info.sfyrjjh == 1">
+                                <div class="multiText"><span>途经国家/地区（直航填无）Transit Country/region? (Enter “no” if direct flights).<i class="icon iconfont icon-shuoming"></i></span>
+                                    <div><textarea v-model="info.tjgj" name="tjgj" rows="" cols="" placeholder="多个用逗号隔开（如德国，荷兰）separate by commas if more than one country (eg: Germany, Netherlands)"></textarea></div>
+                                </div>
+                            </li>
+                            <li v-show="info.sfzx==='0' && sfzgn == 0 && info.sfyrjjh == 1">
+                                <div class="text">
+                                    <span>拟入境日期（北京时间） Planned date of arrival<i class="icon iconfont icon-shuoming"></i></span>
+                                    <input name="nrjrq" v-model="info.nrjrq" type="date" placeholder=""></div>
+                            </li>
+                            <li v-show="info.sfzx==='0' && sfzgn == 0 && info.sfyrjjh == 1">
+                                <div class="text">
+                                    <span>入境口岸 Port of Entry<i class="icon iconfont icon-shuoming"></i></span>
+                                    <input name="rjka" v-model="info.rjka" type="text" placeholder="输入入境口岸（城市） enter port of entry (city)"></div>
+                            </li>
+                            <li v-show="info.sfzx==='0' && sfzgn == 0 && info.sfyrjjh == 1">
+                                <div name="jnmdd" class="text">
+                                    <span>境内目的地 Destination in Chinese Mainland<i class="icon iconfont icon-shuoming"></i></span>
+                                    <div class="hcqbtn-wrap">
+                                        <select class="hcqbtn hcqbtn-danger" v-model='info.jnmddsheng' @change="handleChangeCityt(info.jnmddsheng)">
+                                            <option value="">请选择</option>
+                                            <option v-for='p in Allprovice' :value="p.name">{{p.name}}</option>
+                                        </select>
+
+                                        <select class="hcqbtn hcqbtn-warning" v-model='info.jnmddshi' @change="handleChangeAreat(info.jnmddshi)">
+                                            <option value="">请选择</option>
+                                            <option v-for='c in Allcityt' :value="c.name">{{c.name}}</option>
+                                        </select>
+                                        <select class="hcqbtn hcqbtn-primary" v-model="info.jnmddqu" v-show="Allareat.length>0">
+                                            <option value="">请选择</option>
+                                            <option v-for='a in Allareat' :value="a">{{a}}</option>
+                                        </select>
+
+                                    </div>
+                                    <input name="jnmddxiangxi" v-model="info.jnmddxiangxi" type="text" placeholder="详细地址 Detailed address" class="hcqbtn-wrap-input">
+                                </div>
+                            </li>
+                            <li v-show="info.sfzx==='0' && sfzgn == 0 && info.sfyrjjh == 1">
+                                <div name="rjjtfs" class="radio"><span>入境交通方式 Mode of transport by which you enter Chinese Mainland<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                    <div>
+                                        <div @click="info.rjjtfs=1"><span :class="{active: info.rjjtfs==1}"><i></i></span> <span>飞机 By plane</span></div>
+                                        <div @click="info.rjjtfs=2"><span :class="{active: info.rjjtfs == 2}"><i></i></span> <span>火车 By train</span></div>
+                                        <div @click="info.rjjtfs=4"><span :class="{active: info.rjjtfs == 4}" style="position: relative;top: 0.2rem;"><i></i></span> <span style="position: relative;top: 0.1rem;">其他 Other</span>
+                                            <input name="rjjtfs1" type="text" v-model="info.rjjtfs1" placeholder="请输入 Please enter" class="hcqbtn" style="margin-left: 0.2rem;width: 60%;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li v-show="info.sfzx==='0' && sfzgn == 0 && info.sfyrjjh == 1">
+                                <div class="text">
+                                    <span>入境交通工具班次（航班号，火车车次） Details of the inbound transportation (Flight number, train number)<i class="icon iconfont icon-shuoming"></i></span>
+                                    <input name="rjjtgjbc" v-model="info.rjjtgjbc" type="text" placeholder="多个用逗号隔开 Separate by commas if more than one"></div>
+                            </li>
+                            <li v-show="info.sfzx==='0' && sfzgn == 0 && info.sfyrjjh == 1">
+                                <div name="jnjtfs" class="radio"><span>境内交通方式 Mode of transport in Chinese Mainland <i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                    <div>
+                                        <div @click="info.jnjtfs=1"><span :class="{active: info.jnjtfs==1}"><i></i></span> <span>飞机 By plane</span></div>
+                                        <div @click="info.jnjtfs=2"><span :class="{active: info.jnjtfs == 2}"><i></i></span> <span>火车 By train</span></div>
+                                        <div @click="info.jnjtfs=3"><span :class="{active: info.jnjtfs == 3}"><i></i></span> <span>汽车 By coach</span></div>
+                                        <div @click="info.jnjtfs=4"><span :class="{active: info.jnjtfs == 4}" style="position: relative;top: 0.2rem;"><i></i></span> <span style="position: relative;top: 0.1rem;">其他 Other</span>
+                                            <input name="jnjtfs1" type="text" v-model="info.jnjtfs1" placeholder="请输入 Please enter" class="hcqbtn" style="margin-left: 0.2rem;width: 60%;">
+                                        </div>
+                                    </div>
+                            </li>
+                            <li v-show="info.sfzx==='0' && sfzgn == 0 && info.sfyrjjh == 1">
+                                <div class="text">
+                                    <span>境内交通工具班次（航班号，火车车次，汽车牌照） Transportation details in Chinese Mainland (Flight number, train number, license plate)<i class="icon iconfont icon-shuoming"></i></span>
+                                    <input name="jnjtgjbc" v-model="info.jnjtgjbc" type="text" placeholder="多个用逗号隔开 Separate by commas if more than one"></div>
+                            </li>
+                            <li>
+                                <div name="sqhzjkkys" class="radio"><span>今日申领健康码的状态？What's the color of your health code today？<i class="icon iconfont icon-shuoming"></i><em></em></span>
                                     <div>
                                         <div @click="info.sqhzjkkys=1"><span :class="{active: info.sqhzjkkys==1}"><i></i></span> <span>绿码 Green code</span></div>
                                         <div @click="info.sqhzjkkys=2"><span :class="{active: info.sqhzjkkys==2}"><i></i></span> <span>红码 Red code</span></div>
                                         <div @click="info.sqhzjkkys=3"><span :class="{active: info.sqhzjkkys==3}"><i></i></span> <span>黄码 Yellow code</span></div>
                                         <div @click="info.sqhzjkkys=4"><span :class="{active: info.sqhzjkkys==4}"><i></i></span> <span>橙码 Orange code</span></div>
-                                        
+                                        <div @click="info.sqhzjkkys=5"><span :class="{active: info.sqhzjkkys==5}"><i></i></span> <span>无 No</span></div>
                                     </div>
                                 </div>
                             </li>
 
+                            <li>
+                                <div name="tw" class="radio"><span>今日是否有发热症状（高于37.2 ℃）？ Do you have a fever(above 37.2℃) today?<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                    <div>
 
-                        <li>
-                            <div name="sfzx" class="radio"><span>今日是否在校？ Are you on campus today?<i class="icon iconfont icon-shuoming"></i><em></em></span>
-                                <div>
-                                    <div @click="setSfzx('1')"><span :class="{active: info.sfzx==='1'}"><i></i></span> <span>是 Yes</span></div>
-                                    <div @click="setSfzx('0')"><span :class="{active: info.sfzx==='0'}"><i></i></span> <span>否 No</span></div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li v-if="showFxyy" style="display: none;">
-                            <div class="multiText"><span>返校原因<i class="icon iconfont icon-shuoming"></i></span>
-                                <div><textarea v-model="info.fxyy" name="fxyy" rows="" cols="" placeholder=""></textarea></div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div name="sfzgn" class="radio"><span>所在地点 Your Location<i class="icon iconfont icon-shuoming"></i><em></em></span>
-                                <div>
-                                    <div @click="setSfzgn(1)"><span :class="{active: sfzgn==1}"><i></i></span> <span>境内 in Chinese Mainland</span></div>
-                                    <div @click="setSfzgn(0)"><span :class="{active: sfzgn==0}"><i></i></span> <span>境外 outside Chinese Mainland</span></div>
-                                </div>
-                            </div>
-                        </li>
-                        <li v-show="!ipCtrl1 && sfzgn == 0" name="dwszgj">
-                            <div class="text" @click="mapInit()">
-                                <span>所在地点（请打开手机位置功能，并在手机权限设置中选择允许访问位置信息）Your location (Please turn on the location access function on your mobile phone and allow App to access your location)<i class="icon iconfont icon-shuoming"></i></span>
-                                <input name="szgjcs" v-model="info.szgjcs" readonly type="text" placeholder="点击获取地理位置(Click to get your location)"></div>
-                        </li>
-                        <li v-show="ipCtrl1 && sfzgn == 0">
-                            <div class="text">
-                                <div class="hcqbtn-wrap">
-                                    <select class="hcqbtn" name="szgj" id="szgj">
-                                        <option value="">请选择所在地区/国家</option>
-                                        <option v-for='p in country' :value="p.name">{{p.name}} {{p.ename}}</option>
-                                    </select>
-                                    <input v-model="info.gwszgzcs" type="text" placeholder="所在城市 City" class="hcqbtn" name="gwszgzcs">
-
-                                </div>
-                            </div>
-                        </li>
-                        <li v-show="!ipCtrl && sfzgn == 1">
-                            <div name="area" class="text" style="cursor: pointer" @click="getLocation()">
-                                <span>所在地点（请打开手机位置功能，并在手机权限设置中选择允许访问位置信息）Your location (Please turn on the location access function on your mobile phone and allow App to access your location)<i class="icon iconfont icon-shuoming"></i></span>
-                                <input v-model="info.area" readonly type="text" placeholder="点击获取地理位置 Click to get geographic location"></div>
-                        </li>
-
-                        <li v-show="false && ipCtrl && sfzgn == 1" name="ip">
-                            <div class="text">
-                                <div class="hcqbtn-wrap">
-                                    <select class="hcqbtn hcqbtn-danger" v-model='jtszd.myprovice' @change="handleChangeCity()">
-                                        <option value="">请选择</option>
-                                        <option v-for='p in Allprovice' :value="p.name">{{p.name}}</option>
-                                    </select>
-
-                                    <select class="hcqbtn hcqbtn-warning" v-model='jtszd.mycity' @change="handleChangeArea()">
-                                        <option value="">请选择</option>
-                                        <option v-for='c in Allcity' :value="c.name">{{c.name}}</option>
-                                    </select>
-                                    <select class="hcqbtn hcqbtn-primary" v-model="jtszd.myarea" v-if="Allarea.length>0" @change="handleChange()">
-                                        <option value="">请选择</option>
-                                        <option v-for='a in Allarea' :value="a">{{a}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </li>
-                        <li v-if="info.ismoved == 1">
-                            <div name="bztcyy" class="radio"><span>当前地点与上次不在同一城市，原因如下 Current location is different from last time，why？<i class="icon iconfont icon-shuoming"></i><em></em></span>
-                                <div>
-                                    <div @click="info.bztcyy=2"><span :class="{active: info.bztcyy==2}"><i></i></span> <span>探亲 Visit relatives</span></div>
-                                    <div @click="info.bztcyy=3"><span :class="{active: info.bztcyy==3}"><i></i></span> <span>旅游 Travel</span></div>
-                                    <div @click="info.bztcyy=4"><span :class="{active: info.bztcyy==4}"><i></i></span> <span>回家 Return home</span></div>
-                                    <div @click="info.bztcyy=5"><span :class="{active: info.bztcyy==5}"><i></i></span> <span>返校 Return to school</span></div>
-                                    <div @click="info.bztcyy=6"><span :class="{active: info.bztcyy==6}"><i></i></span> <span>出差 On a business trip</span></div>
-                                    <div @click="info.bztcyy=1"><span :class="{active: info.bztcyy==1}"><i></i></span> <span>其他 Others</span></div>
-                                </div>
-                            </div>
-                        </li>
-                        <li style="display: none;">
-                            <div name="jrdqtlqk" class="radio"><span>你是否从以下地区返回浙江（含经停）? Did you return to Zhejiang from the following areas (including stopovers)？<i class="icon iconfont icon-shuoming"></i><em></em></span>
-                                <div>
-<!--                                    <div @click="getdqtlqk('1')"><span :class="{active: info.jrdqtlqk.indexOf('1')>-1}"><i></i></span> <span>武汉 Wuhan</span></div>-->
-<!--                                    <div @click="getdqtlqk('2')"><span :class="{active: info.jrdqtlqk.indexOf('2')>-1}"><i></i></span> <span>湖北（除武汉） Hubei (non-Wuhan regions)</span></div>-->
-<!--                                    <div @click="getdqtlqk('3')"><span :class="{active: info.jrdqtlqk.indexOf('3')>-1}"><i></i></span> <span>哈尔滨市 Harbin</span></div>-->
-<!--                                    <div @click="getdqtlqk('4')"><span :class="{active: info.jrdqtlqk.indexOf('4')>-1}"><i></i></span> <span>绥芬河市 Suifenhe</span></div>-->
-<!--                                    <div @click="getdqtlqk('5')"><span :class="{active: info.jrdqtlqk.indexOf('5')>-1}"><i></i></span> <span>满洲里市 Manzhouli</span></div>-->
-<!--                                    <div @click="getdqtlqk('6')"><span :class="{active: info.jrdqtlqk.indexOf('6')>-1}"><i></i></span> <span>广州市 Guangzhou</span></div>-->
-<!--                                    <div @click="getdqtlqk('7')"><span :class="{active: info.jrdqtlqk.indexOf('7')>-1}"><i></i></span> <span>深圳市 Shenzhen</span></div>-->
-<!--                                    <div @click="getdqtlqk('8')"><span :class="{active: info.jrdqtlqk.indexOf('8')>-1}"><i></i></span> <span>揭阳市 Jieyang</span></div>-->
-<!--                                    <div @click="getdqtlqk('9')"><span :class="{active: info.jrdqtlqk.indexOf('9')>-1}"><i></i></span> <span>吉林市 Jilin</span></div>-->
-<!--                                    <div @click="getdqtlqk('10')"><span :class="{active: info.jrdqtlqk.indexOf('10')>-1}"><i></i></span> <span>北京市 Beijing</span></div>-->
-                                    <div @click="getdqtlqk('11')"><span :class="{active: info.jrdqtlqk.indexOf('11')>-1}"><i></i></span> <span>7月10日后从乌鲁木齐返回 Urumchi after July 10th</span></div>
-<!--                                    <div @click="getdqtlqk('12')"><span :class="{active: info.jrdqtlqk.indexOf('12')>-1}"><i></i></span> <span>7月15日后从大连返回 Dalian after July 15th</span></div>-->
-                                    <div @click="getdqtlqk('13')"><span :class="{active: info.jrdqtlqk.indexOf('13')>-1}"><i></i></span> <span>8月15日后从汕尾市陆丰市返回Lufeng after Augest 15th</span></div>
-                                    <div @click="getdqtlqk('0')"><span :class="{active: info.jrdqtlqk.indexOf('0')>-1}"><i></i></span> <span>否 None of the above</span></div>
-                                </div>
-                            </div>
-                        </li>
-                        <li v-if="sfzgn== 1">
-                            <div name="sfymqjczrj" class="radio"><span>本人家庭成员(包括其他密切接触人员)是否有近14日入境或近14日拟入境的情况？Have your family members (including other close contact persons）entered Chinese Mainland over the past 14 days or plan to enter Chinese Mainland in 14 days?<i class="icon iconfont icon-shuoming"></i><em></em></span>
-                                <div>
-                                    <div @click="info.sfymqjczrj=1"><span :class="{active: info.sfymqjczrj==1}"><i></i></span> <span>是 Yes，请及时向所在单位报告实际情况。please contact your college/school immediately</span></div>
-                                    <div @click="info.sfymqjczrj=0"><span :class="{active: (info.sfymqjczrj===0 || info.sfymqjczrj === '0')}"><i></i></span> <span>否 No</span></div>
-                                </div>
-                            </div>
-                        </li>
-                        <li v-show="sfzgn == 0">
-                            <div class="multiText"><span>近14日到访过的国家/地区 Countries you’ve visited over the past 14 days<i class="icon iconfont icon-shuoming"></i></span>
-                                <div><textarea v-model="info.zjdfgj" name="zjdfgj" rows="" cols="" placeholder="多个用逗号隔开（如德国，荷兰）separate by commas if more than one country (eg: Germany, Netherlands)"></textarea></div>
-                            </div>
-                        </li>
-                        <li v-show="sfzgn == 0">
-                            <div name="sfyrjjh" class="radio"><span>未来14天内是否有入境计划? Do you have plan to enter Chinese Mainland in the next 14 days?<i class="icon iconfont icon-shuoming"></i><em></em></span>
-                                <div>
-                                    <div @click="info.sfyrjjh=1"><span :class="{active: info.sfyrjjh==1}"><i></i></span> <span>是 Yes</span></div>
-                                    <div @click="info.sfyrjjh=0"><span :class="{active: info.sfyrjjh==0}"><i></i></span> <span>否 No</span></div>
-                                </div>
-                            </div>
-                        </li>
-                        <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
-                            <div name="cfgj" class="text">
-                                <span>出发国家或地区 Departure country or region?<i class="icon iconfont icon-shuoming"></i></span>
-                                <div>
-                                    <select class="hcqbtn" v-model='info.cfgj' name="cfgj" id="cfgj" style="display: block;width: 100%;">
-                                        <option value="">请选择国家或地区 Scroll down to select country or region</option>
-                                        <option v-for='p in country' :value="p.name">{{p.name}} {{p.ename}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
-                            <div class="multiText"><span>途经国家/地区（直航填无）Transit Country/region? (Enter “no” if direct flights).<i class="icon iconfont icon-shuoming"></i></span>
-                                <div><textarea v-model="info.tjgj" name="tjgj" rows="" cols="" placeholder="多个用逗号隔开（如德国，荷兰）separate by commas if more than one country (eg: Germany, Netherlands)"></textarea></div>
-                            </div>
-                        </li>
-                        <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
-                            <div class="text">
-                                <span>拟入境日期（北京时间） Planned date of arrival<i class="icon iconfont icon-shuoming"></i></span>
-                                <input name="nrjrq" v-model="info.nrjrq" type="date" placeholder=""></div>
-                        </li>
-                        <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
-                            <div class="text">
-                                <span>入境口岸 Port of Entry<i class="icon iconfont icon-shuoming"></i></span>
-                                <input name="rjka" v-model="info.rjka" type="text" placeholder="输入入境口岸（城市） enter port of entry (city)"></div>
-                        </li>
-                        <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
-                            <div name="jnmdd" class="text">
-                                <span>境内目的地 Destination in Chinese Mainland<i class="icon iconfont icon-shuoming"></i></span>
-                                <div class="hcqbtn-wrap">
-                                    <select class="hcqbtn hcqbtn-danger" v-model='info.jnmddsheng' @change="handleChangeCityt(info.jnmddsheng)">
-                                        <option value="">请选择</option>
-                                        <option v-for='p in Allprovice' :value="p.name">{{p.name}}</option>
-                                    </select>
-
-                                    <select class="hcqbtn hcqbtn-warning" v-model='info.jnmddshi' @change="handleChangeAreat(info.jnmddshi)">
-                                        <option value="">请选择</option>
-                                        <option v-for='c in Allcityt' :value="c.name">{{c.name}}</option>
-                                    </select>
-                                    <select class="hcqbtn hcqbtn-primary" v-model="info.jnmddqu" v-show="Allareat.length>0">
-                                        <option value="">请选择</option>
-                                        <option v-for='a in Allareat' :value="a">{{a}}</option>
-                                    </select>
-
-                                </div>
-                                <input name="jnmddxiangxi" v-model="info.jnmddxiangxi" type="text" placeholder="详细地址 Detailed address" class="hcqbtn-wrap-input">
-                            </div>
-                        </li>
-                        <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
-                            <div name="rjjtfs" class="radio"><span>入境交通方式 Mode of transport by which you enter Chinese Mainland<i class="icon iconfont icon-shuoming"></i><em></em></span>
-                                <div>
-                                    <div @click="info.rjjtfs=1"><span :class="{active: info.rjjtfs==1}"><i></i></span> <span>飞机 By plane</span></div>
-                                    <div @click="info.rjjtfs=2"><span :class="{active: info.rjjtfs == 2}"><i></i></span> <span>火车 By train</span></div>
-                                    <div @click="info.rjjtfs=4"><span :class="{active: info.rjjtfs == 4}" style="position: relative;top: 0.2rem;"><i></i></span> <span style="position: relative;top: 0.1rem;">其他 Other</span>
-                                    <input name="rjjtfs1" type="text" v-model="info.rjjtfs1" placeholder="请输入 Please enter" class="hcqbtn" style="margin-left: 0.2rem;width: 60%;">
+                                        <div @click="info.tw='1'"><span :class="{active: info.tw==='1'}"><i></i></span> <span>是 Yes</span></div>
+                                        <div @click="info.tw='0'"><span :class="{active: info.tw==='0'}"><i></i></span> <span>否 No</span></div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
-                            <div class="text">
-                                <span>入境交通工具班次（航班号，火车车次） Details of the inbound transportation (Flight number, train number)<i class="icon iconfont icon-shuoming"></i></span>
-                                <input name="rjjtgjbc" v-model="info.rjjtgjbc" type="text" placeholder="多个用逗号隔开 Separate by commas if more than one"></div>
-                        </li>
-                        <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
-                            <div name="jnjtfs" class="radio"><span>境内交通方式 Mode of transport in Chinese Mainland <i class="icon iconfont icon-shuoming"></i><em></em></span>
-                                <div>
-                                    <div @click="info.jnjtfs=1"><span :class="{active: info.jnjtfs==1}"><i></i></span> <span>飞机 By plane</span></div>
-                                    <div @click="info.jnjtfs=2"><span :class="{active: info.jnjtfs == 2}"><i></i></span> <span>火车 By train</span></div>
-                                    <div @click="info.jnjtfs=3"><span :class="{active: info.jnjtfs == 3}"><i></i></span> <span>汽车 By coach</span></div>
-                                    <div @click="info.jnjtfs=4"><span :class="{active: info.jnjtfs == 4}" style="position: relative;top: 0.2rem;"><i></i></span> <span style="position: relative;top: 0.1rem;">其他 Other</span>
-                                        <input name="jnjtfs1" type="text" v-model="info.jnjtfs1" placeholder="请输入 Please enter" class="hcqbtn" style="margin-left: 0.2rem;width: 60%;">
+                            </li>
+                            <li v-show="info.tw == 1">
+                                <div name="sfyqjzgc" class="radio"><span>是否到具有发热门诊（诊室）的医疗机构就诊？ Have you visited the medical institutions with the fever clinic last few days?<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                    <div>
+                                        <div @click="info.sfyqjzgc=1"><span :class="{active: info.sfyqjzgc==1}"><i></i></span> <span>是 Yes</span></div>
+                                        <div @click="info.sfyqjzgc=0"><span :class="{active: info.sfyqjzgc==0}"><i></i></span> <span>否 No</span></div>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
-                            <div class="text">
-                                <span>境内交通工具班次（航班号，火车车次，汽车牌照） Transportation details in Chinese Mainland (Flight number, train number, license plate)<i class="icon iconfont icon-shuoming"></i></span>
-                                <input name="jnjtgjbc" v-model="info.jnjtgjbc" type="text" placeholder="多个用逗号隔开 Separate by commas if more than one"></div>
-                        </li>
-                        <li>
-                             <div name="sfqrxxss" class="radio">
-                                <div>
-                                    <div @click="info.sfqrxxss = 1"><span  :class="{active: info.sfqrxxss == 1}">
+                            </li>
+                            <li>
+                                <div name="sfcxzysx" class="radio"><span>今日是否有涉及涉疫情的管控措施是 Are you under any control measures related to the COVID-19 today?<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                    <div>
+                                        <div @click="info.sfcxzysx=1"><span :class="{active: info.sfcxzysx==1}"><i></i></span> <span>是 Yes</span></div>
+                                        <div @click="info.sfcxzysx=0"><span :class="{active: info.sfcxzysx==0}"><i></i></span> <span>否 No</span></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li v-if="info.sfcxzysx==1">
+                                <div name="qksm" class="radio"><span>情况说明 Details<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                    <div>
+                                        <div @click="info.qksm='14天集中隔离医学观察'"><span :class="{active: info.qksm=='14天集中隔离医学观察'}"><i></i></span> <span>14天集中隔离医学观察    14-day centralized quarantine medical observation</span></div>
+                                        <div @click="info.qksm='7天集中隔离医学观察'"><span :class="{active: info.qksm=='7天集中隔离医学观察'}"><i></i></span> <span>7天集中隔离医学观察    7-day centralized quarantine medical observation</span></div>
+                                        <div @click="info.qksm='7天居家健康观察'"><span :class="{active: info.qksm=='7天居家健康观察'}"><i></i></span> <span>7天居家健康观察    7-day home health observation</span></div>
+                                        <div @click="info.qksm='3天居家健康观察'"><span :class="{active: info.qksm=='3天居家健康观察'}"><i></i></span> <span>3天居家健康观察    3-day home health observation</span></div>
+                                        <div @click="info.qksm='14天日常健康监测'"><span :class="{active: info.qksm=='14天日常健康监测'}"><i></i></span> <span>14天日常健康监测    14-day daily health monitoring</span></div>
+                                        <div @click="info.qksm='11天日常健康监测'"><span :class="{active: info.qksm=='11天日常健康监测'}"><i></i></span> <span>11天日常健康监测    11 -day daily health monitoring</span></div>
+                                        <div @click="info.qksm='7天日常健康监测'"><span :class="{active: info.qksm=='7天日常健康监测'}"><i></i></span> <span>7天日常健康监测      7-day daily health monitoring</span></div>
+                                        <div @click="info.qksm='处于封控区管控'"><span :class="{active: info.qksm=='处于封控区管控'}"><i></i></span> <span>处于封控区管控      In the closed control area</span></div>
+                                        <div @click="info.qksm='处于管控区管控'"><span :class="{active: info.qksm=='处于管控区管控'}"><i></i></span> <span>处于管控区管控      In the management control area</span></div>
+                                        <div @click="info.qksm='处于防范区管控'"><span :class="{active: info.qksm=='处于防范区管控'}"><i></i></span> <span>处于防范区管控     In the prevention area</span></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div name="sfjcbh" class="radio"><span>是否有与新冠疫情确诊人员或密接人员有接触的情况? Have you been in close contact with confirmed cases or close contact cases of the COVID-19 in the last few days?<i class="icon iconfont icon-shuoming"></i></span>
+                                    <div>
+                                        <div @click="info.sfjcbh=1"><span :class="{active: info.sfjcbh==1}"><i></i></span> <span>是 Yes</span></div>
+                                        <div @click="info.sfjcbh=0"><span :class="{active: info.sfjcbh==0}"><i></i></span> <span>否 No</span></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li v-if="info.sfjcbh == 1">
+                                <div name="jcbhlx" class="radio"><span>具体情况 Details<i class="icon iconfont icon-shuoming"></i></span>
+                                    <div>
+                                        <div @click="info.jcbhlx='与确诊人员有接触'"><span :class="{active: info.jcbhlx=='与确诊人员有接触'}"><i></i></span> <span>与确诊人员有接触   Contacted the confirmed cases</span></div>
+                                        <div @click="info.jcbhlx='与密接人员有接触'"><span :class="{active: info.jcbhlx=='与密接人员有接触'}"><i></i></span> <span>与密接人员有接触   Contacted the close contact cases</span></div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="text">
+                                    <input style="width: unset;display: inline-block;" name="verifyCode" v-model="info.verifyCode" type="text" placeholder="请输入验证码">
+                                    <span style="float: right;"><img :src="codeImg" style=" margin-bottom: 10px;" @click="change()"/></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div name="sfqrxxss" class="radio">
+                                    <div>
+                                        <div @click="info.sfqrxxss = 1"><span  :class="{active: info.sfqrxxss == 1}">
                                             <i></i></span> <span>本人承诺：</br>
-                                        上述信息真实准确。如有变化，及时更新相关信息并报告所在单位。</br>
-                                        本人已知晓并将遵守政府和学校相关规定，配合做好疫情防控工作。</br>
-                                            I agree:</br>
-                                            The above information is true and accurate. In case of changes, I will keep my information updated and report in a timely manner.</br>
-                                            I have understood and will abide by the relevant government and University regulations to facilitate the prevention and control of COVID-19 epidemic.</br>
+                                                上述信息真实准确。如有变化，及时更新相关信息并报告所在单位。</br>
+                                                本人已知晓并将遵守政府和学校相关规定，配合做好疫情防控工作。</br>
+                                                I certify:</br>
+                                                The above information is true and accurate. In case of changes, I will keep my information updated and report in a timely manner.</br>
+                                                I have understood and will abide by the relevant government and University regulations to facilitate the prevention and control of COVID-19 epidemic.</br>
                                         </span></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="list-box">
+                        <div class="footers"><a @click="confirm()" :class="{'wapcf-btn-qx': hasFlag == 1}" >{{btnmsg}}</a>
+                                                    </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="alert" v-show="show">
+            <div>
+                <p><span></span><span>提交信息成功</span></p>
+                <a href="javascript:;" @click="show=false">确定 OK</a>
+            </div>
+        </div>
+    </div>
+
+        <script src="https://healthreport.zju.edu.cn/wap/ncov/js/zjucity.js"></script><script src="https://healthreport.zju.edu.cn/wap/ncov/js/country.js?v3"></script><script src="https://healthreport.zju.edu.cn/thirdparty/nifty/plugins/select2/js/select2.min.js"></script><script src="https://healthreport.zju.edu.cn/wap/datalook/js/vconsole.min.js"></script>            <script type="text/javascript">
+                        var def = {"sfymqjczrj":"0","zjdfgj":"","sfyrjjh":"0","cfgj":"","tjgj":"","nrjrq":"0","rjka":"","jnmddsheng":"","jnmddshi":"","jnmddqu":"","jnmddxiangxi":"","rjjtfs":"","rjjtfs1":"","rjjtgjbc":"","jnjtfs":"","jnjtfs1":"","jnjtgjbc":"","sfqrxxss":"1","sfqtyyqjwdg":"0","sffrqjwdg":"0","sfhsjc":"","zgfx14rfh":"0","zgfx14rfhdd":"","sfyxjzxgym":"1","sfbyjzrq":"5","jzxgymqk":"6","campus":"\u7d2b\u91d1\u6e2f\u6821\u533a","uid":"116420","date":"20220508","tw":"0","sfcxtz":"0","sfyyjc":"0","jcjgqr":"0","jcjg":"","sfjcbh":"0","sfcxzysx":"0","remark":"","address":"","area":"","province":"\u6d59\u6c5f\u7701","city":"","geo_api_info":"{\"type\":\"complete\",\"position\":{\"Q\":30.299656846789,\"R\":120.07152452257003,\"lng\":120.071525,\"lat\":30.299657},\"location_type\":\"html5\",\"message\":\"Get geolocation success.Convert Success.Get address success.\",\"accuracy\":30,\"isConverted\":true,\"status\":1,\"addressComponent\":{\"citycode\":\"0571\",\"adcode\":\"330106\",\"businessAreas\":[{\"name\":\"\u897f\u6eaa\",\"id\":\"330106\",\"location\":{\"Q\":30.271791,\"R\":120.09102999999999,\"lng\":120.09103,\"lat\":30.271791}}],\"neighborhoodType\":\"\",\"neighborhood\":\"\",\"building\":\"\",\"buildingType\":\"\",\"street\":\"\u4e94\u5e38\u6e2f\u8def\",\"streetNumber\":\"474\u53f7\",\"country\":\"\u4e2d\u56fd\",\"province\":\"\u6d59\u6c5f\u7701\",\"city\":\"\u676d\u5dde\u5e02\",\"district\":\"\u897f\u6e56\u533a\",\"towncode\":\"330106109000\",\"township\":\"\u4e09\u58a9\u9547\"},\"formattedAddress\":\"\u6d59\u6c5f\u7701\u676d\u5dde\u5e02\u897f\u6e56\u533a\u4e09\u58a9\u9547\u6d59\u6c5f\u5927\u5b66\u7d2b\u91d1\u6e2f\u6821\u533a\u897f\u533a\u535a\u58eb\u751f\u516c\u5bd3\u6d59\u6c5f\u5927\u5b66(\u7d2b\u91d1\u6e2f\u6821\u533a)\",\"roads\":[],\"crosses\":[],\"pois\":[],\"info\":\"SUCCESS\"}","created":1651970240,"qksm":"","sfzx":"1","sfjcwhry":"0","sfcyglq":"0","gllx":"","glksrq":"","jcbhlx":"","jcbhrq":"","sftjwh":"0","sftjhb":"0","fxyy":"","bztcyy":"","fjsj":"0","sfjchbry":"0","jrsfqzys":"","jrsfqzfy":"","sfyqjzgc":"","jrdqjcqk":"","sfjcqz":"","jcqzrq":"","jcwhryfs":"","jchbryfs":"","xjzd":"","szgj":"","sfsfbh":"0","jhfjrq":"","jhfjjtgj":"","jhfjhbcc":"","jhfjsftjwh":"0","jhfjsftjhb":"0","szsqsfybl":0,"sfsqhzjkk":1,"sqhzjkkys":"1","sfygtjzzfj":0,"gtjzzfjsj":"","gwszgz":"","gwszgzcs":"","created_uid":0,"id":48169724,"gwszdd":"","jrdqtlqk":[]};
+                var vm = new Vue({
+            el: '.form-detail2',
+            data: {
+                realname: "黄思思",
+                number: '12118643',
+                date: '2022-05-08',
+                codeImg: '/ncov/wap/default/code',
+                info: $.extend({
+                    sfymqjczrj: 0,
+                    zjdfgj: '',
+                    sfyrjjh: 0,
+                    cfgj: '',
+                    tjgj: '',
+                    nrjrq: 0,
+                    rjka: '',
+                    jnmddsheng: '',
+                    jnmddshi: '',
+                    jnmddqu: '',
+                    jnmddxiangxi: '',
+                    rjjtfs: '',
+                    rjjtfs1: '',
+                    rjjtgjbc: '',
+                    jnjtfs: '',
+                    jnjtfs1: '',
+                    jnjtgjbc: '',
+                    sfqrxxss: '',
+                    sfqtyyqjwdg: '',
+                    sffrqjwdg: '',
+                    jrdqtlqk: [],
+                    sfhsjc: '',
+                    zgfx14rfh: 0,
+                    zgfx14rfhdd:'',
+                    sfyxjzxgym: '',
+                    sfbyjzrq: 0,
+                    jzxgymqk: 0,
+                    campus: '',
+                    ismoved: 0,
+                }, def, {
+                    jrdqtlqk: [],
+                    szgjcs: '',
+                    verifyCode: '',
+                    
+"dbfb7190a31b5f8cd4a85f5a4975b89b": "1651975393","1a7c5b2e52854a2480947880eabe1fe1":"763674205059395ca119d3219b630fb0",
+                }),
+                oldInfo: {"uid":"116420","date":"20220507","tw":"0","sfcxtz":"0","sfyyjc":"0","jcjgqr":"0","jcjg":"","sfjcbh":"0","sfcxzysx":"0","remark":"","address":"\u6d59\u6c5f\u7701\u676d\u5dde\u5e02\u897f\u6e56\u533a\u4e09\u58a9\u9547\u6d59\u6c5f\u5927\u5b66\u7d2b\u91d1\u6e2f\u6821\u533a\u897f\u533a\u5b66\u751f\u751f\u6d3b\u7ec4\u56e2\u6d59\u6c5f\u5927\u5b66(\u7d2b\u91d1\u6e2f\u6821\u533a)","area":"\u6d59\u6c5f\u7701 \u676d\u5dde\u5e02 \u897f\u6e56\u533a","province":"\u6d59\u6c5f\u7701","city":"\u676d\u5dde\u5e02","geo_api_info":"{\"type\":\"complete\",\"position\":{\"Q\":30.298778754341,\"R\":120.07147949218802,\"lng\":120.071479,\"lat\":30.298779},\"location_type\":\"html5\",\"message\":\"Get geolocation success.Convert Success.Get address success.\",\"accuracy\":550,\"isConverted\":true,\"status\":1,\"addressComponent\":{\"citycode\":\"0571\",\"adcode\":\"330106\",\"businessAreas\":[{\"name\":\"\u897f\u6eaa\",\"id\":\"330106\",\"location\":{\"Q\":30.271791,\"R\":120.09102999999999,\"lng\":120.09103,\"lat\":30.271791}}],\"neighborhoodType\":\"\",\"neighborhood\":\"\",\"building\":\"\",\"buildingType\":\"\",\"street\":\"\u4e94\u5e38\u6e2f\u8def\",\"streetNumber\":\"470\u53f7\",\"country\":\"\u4e2d\u56fd\",\"province\":\"\u6d59\u6c5f\u7701\",\"city\":\"\u676d\u5dde\u5e02\",\"district\":\"\u897f\u6e56\u533a\",\"towncode\":\"330106109000\",\"township\":\"\u4e09\u58a9\u9547\"},\"formattedAddress\":\"\u6d59\u6c5f\u7701\u676d\u5dde\u5e02\u897f\u6e56\u533a\u4e09\u58a9\u9547\u6d59\u6c5f\u5927\u5b66\u7d2b\u91d1\u6e2f\u6821\u533a\u897f\u533a\u5b66\u751f\u751f\u6d3b\u7ec4\u56e2\u6d59\u6c5f\u5927\u5b66(\u7d2b\u91d1\u6e2f\u6821\u533a)\",\"roads\":[],\"crosses\":[],\"pois\":[],\"info\":\"SUCCESS\"}","created":1651878992,"qksm":"","sfzx":"1","sfjcwhry":"0","sfcyglq":"0","gllx":"","glksrq":"","jcbhlx":"","jcbhrq":"","sftjwh":"0","sftjhb":"0","fxyy":"","bztcyy":"","fjsj":"0","sfjchbry":"0","jrsfqzys":"","jrsfqzfy":"","sfyqjzgc":"","jrdqjcqk":"","sfjcqz":"","jcqzrq":"","jcwhryfs":"","jchbryfs":"","xjzd":"","szgj":"","sfsfbh":"0","jhfjrq":"","jhfjjtgj":"","jhfjhbcc":"","jhfjsftjwh":"0","jhfjsftjhb":"0","szsqsfybl":"0","sfsqhzjkk":1,"sqhzjkkys":"1","sfygtjzzfj":0,"gtjzzfjsj":"","gwszgz":"","gwszgzcs":"","sfymqjczrj":"0","zjdfgj":"","sfyrjjh":"0","cfgj":"","tjgj":"","nrjrq":"0","rjka":"","jnmddsheng":"","jnmddshi":"","jnmddqu":"","jnmddxiangxi":"","rjjtfs":"","rjjtfs1":"","rjjtgjbc":"","jnjtfs":"","jnjtfs1":"","jnjtgjbc":"","sfqrxxss":"1","sffrqjwdg":"0","sfqtyyqjwdg":"0","sfhsjc":"","zgfx14rfhdd":"","zgfx14rfh":"0","sfyxjzxgym":"1","sfbyjzrq":"5","jzxgymqk":"6","campus":"\u7d2b\u91d1\u6e2f\u6821\u533a","ismoved":"0","created_uid":0,"id":48096253},
+                tipMsg: '',
+                ajaxLock: false,
+                showFxyy: false,
+                sfzgn: 1,
+                hasFlag: '1',
+                setting: {"title":"\u6bcf\u65e5\u4e0a\u62a5","desc":"","area":"","sendmsg":"","img":"image\/0\/75f80ea66156e25eb82882e6f56f12c9.png","copyright":"","notifywid":"","sms":"1","mp":"0","notice_num":"5","mpid":"","templateid":""},
+                show:false,
+                btnmsg:"提交信息 Submit information",
+                Allprovice:allProvinces,
+                Allcity:[],
+                Allarea:[],
+                Allcityt:[],
+                Allareat:[],
+                ipCtrl:false,
+                ipCtrl1:false,
+                jtszd:{
+                    myprovice:"",
+                    mycity:"",
+                    myarea:""
+                },
+                country:country,
+            },
+            // watch: {
+            // 'info.area': function() {
+            //     if(!$.isEmptyObject(this.oldInfo) && (this.info.province + this.info.city != this.oldInfo.province + this.oldInfo.city)) {
+            //         this.info.ismoved = 1;
+            //     }else {
+            //         this.info.ismoved = 0;
+            //     }
+            // },
+            // 'info.sfzx': function () {
+            //     if(!$.isEmptyObject(this.oldInfo) && this.oldInfo.sfzx === '0' && this.info.sfzx === '1') {
+            //         this.showFxyy = true;
+            //     }else {
+            //         this.showFxyy = false;
+            //     }
+            //
+            // }
+            // },
+            created:function(){
+                if(this.info.gwszgzcs!='' && this.info.szgj!=''){
+                    this.sfzgn = 0;
+                }
+
+                if(this.info.jrdqtlqk==undefined || $.isEmptyObject(this.info.jrdqtlqk)){
+                    this.info.jrdqtlqk = [];
+                }
+            },
+            methods: {
+                titlebtn:function(){
+                    wapalert('以下情况属于居家隔离The following situations belong to self-isolation at home:<br>1. 目前存在发热、咳嗽、呼吸道症状的人员Those who have a fever(Above 37.2℃), cough or respiratory symptoms at present.<br>2.其他当地部门、医疗机构、社区等明确要求居家隔离的人员 people that are given positive demand to self-isolation at home by other local authorities, medical institutions and communities.', false, function () {
+
+                    });
+                },
+                change() {
+                    this.codeImg = '/ncov/wap/default/code?_t=' + Math.random();
+                },
+                mapInit() {
+                    var self = this;
+                    waploading('', '获取地理位置中（Getting the location）...');
+                    self.loadBMap('0hYGiH3Ob5ZhV0eWzrGVXCD3bEdBCi6L', function() {
+                        if (navigator.geolocation) {
+                            try {
+                                var geolocation = new BMap.Geolocation();
+                                var gc = new BMap.Geocoder();
+                                console.log('start');
+                                geolocation.getCurrentPosition(
+                                    function(p) {
+                                        // 创建地理编码实例
+                                        if( this.getStatus() == BMAP_STATUS_SUCCESS ){
+                                            if(p.accuracy==null){  //用户点击拒绝
+                                                waploading('hide');
+                                                wapalert('没有权限');
+                                                self.ipCtrl1 = true;
+                                                self.info.geo_api_info = JSON.stringify({status:1, result: '用户点击拒绝'});
+                                                return false;
+                                            }else{//用户点击允许
+                                                // console.log(2,p);
+                                                if( p != null ){
+                                                    var pt = p.point;//经纬度
+
+                                                    $.ajax({
+                                                        url: 'https://api.map.baidu.com/reverse_geocoding/v3/?output=json&coordtype=wgs84ll',
+                                                        dataType: 'jsonp',
+                                                        type: 'GET',
+                                                        data: {
+                                                            ak:'0hYGiH3Ob5ZhV0eWzrGVXCD3bEdBCi6L',
+                                                            location: pt.lat + ',' + pt.lng
+                                                        },
+                                                        success: function (res) {
+                                                            self.info.geo_api_info = JSON.stringify(res);
+                                                            waploading('hide');
+                                                            if( res.status == 0 ){
+                                                                // console.log(555,res);
+                                                                var country = res.result.addressComponent.country;//国家
+                                                                var city = res.result.addressComponent.city;//城市
+                                                                self.info.szgj = country;
+                                                                self.info.gwszgzcs = city;
+                                                                self.info.szgjcs = country+' '+city;
+                                                                if($.trim(country) === '' && $.trim(city) === '') {
+                                                                    wapalert('获取位置信息失败（Failed to get the location）');
+                                                                    self.ipCtrl1 = true;
+                                                                    self.info.geo_api_info = JSON.stringify({status:1, result: '获取位置信息失败'});
+                                                                }
+                                                            }else{
+                                                                wapalert('获取位置信息失败（Failed to get the location）');
+                                                            }
+                                                        },
+                                                        error: function () {
+                                                            waploading('hide');
+                                                            wapalert('获取位置信息失败（Failed to get the location）');
+                                                            self.ipCtrl1 = true;
+                                                            self.info.geo_api_info = JSON.stringify({status:1, result: '获取位置信息失败'});
+                                                        }
+                                                    });
+                                                }else{
+                                                    waploading('hide');
+                                                    wapalert('获取位置信息失败（Failed to get the location）');
+                                                    self.ipCtrl1 = true;
+                                                    self.info.geo_api_info = JSON.stringify({status:1, result: '未获取到经纬度'});
+                                                }
+                                            }
+                                        }else if( this.getStatus() == BMAP_STATUS_CITY_LIST ){
+                                            waploading('hide');
+                                            wapalert('暂时获取不到位置信息（Cannot get the location）');
+                                            self.ipCtrl1 = true;
+                                            self.info.geo_api_info = JSON.stringify({status:1, result: '获取不到位置信息'});
+
+                                        }else if( this.getStatus() == BMAP_STATUS_UNKNOWN_LOCATION ){
+                                            waploading('hide');
+                                            wapalert('位置结果未知（Location result unknown）');
+                                            self.ipCtrl1 = true;
+                                            self.info.geo_api_info = JSON.stringify({status:1, result: '位置结果未知'});
+
+                                        }else if( this.getStatus() == BMAP_STATUS_UNKNOWN_ROUTE ){
+                                            waploading('hide');
+                                            wapalert('导航结果未知（Navigation result unknown）');
+                                            self.ipCtrl1 = true;
+                                            self.info.geo_api_info = JSON.stringify({status:1, result: '导航结果未知'});
+
+                                        }else if( this.getStatus() == BMAP_STATUS_INVALID_KEY ){
+                                            waploading('hide');
+                                            wapalert('非法密钥（Invalid key）');
+                                            self.ipCtrl1 = true;
+                                            self.info.geo_api_info = JSON.stringify({status:1, result: '非法密钥'});
+
+                                        }else if( this.getStatus() == BMAP_STATUS_INVALID_REQUEST){
+                                            waploading('hide');
+                                            wapalert('非法请求（Invalid request）');
+                                            self.ipCtrl1 = true;
+                                            self.info.geo_api_info = JSON.stringify({status:1, result: '非法请求'});
+
+                                        }else if( this.getStatus() == BMAP_STATUS_PERMISSION_DENIED){
+                                            waploading('hide');
+                                            wapalert('没有权限（Permission denied）');
+                                            self.ipCtrl1 = true;
+                                            self.info.geo_api_info = JSON.stringify({status:1, result: '没有权限'});
+
+                                        }else if( this.getStatus() == BMAP_STATUS_SERVICE_UNAVAILABLE ){
+                                            waploading('hide');
+                                            wapalert('服务不可用（Service unavailable）');
+                                            self.ipCtrl1 = true;
+                                            self.info.geo_api_info = JSON.stringify({status:1, result: '服务不可用'});
+
+                                        }else if( this.getStatus() == BMAP_STATUS_TIMEOUT ){
+                                            waploading('hide');
+                                            wapalert('获取定位超时（Timeout to get the location）');
+                                            self.ipCtrl1 = true;
+                                            self.info.geo_api_info = JSON.stringify({status:1, result: '获取定位超时'});
+
+                                        }
+                                    }, function(err) {
+                                        waploading('hide');
+                                        wapalert('无法获取位置信息（Failed to get the location）');
+                                        self.ipCtrl1 = true;
+                                        self.info.geo_api_info = JSON.stringify({status:1, result: '无法获取位置信息', err: err});
+                                    },{
+                                        enableHighAcuracy: true,
+                                        maximumAge: 0,
+                                    });
+                            } catch (err) {
+                                console.log(err);
+                                waploading('hide');
+                                wapalert('无法获取当前地理位置（Fail to get your geolocation）');
+                                self.ipCtrl1 = true;
+                                self.info.geo_api_info = JSON.stringify({status:1, result: '无法获取当前地理位置'});
+                            }
+                        } else {
+                            waploading('hide');
+                            wapalert('浏览器不支持定位（This browser does not support location services）');
+                            self.ipCtrl1 = true;
+                            self.info.geo_api_info = JSON.stringify({status:1, result: '浏览器不支持定位'});
+                            return false;
+                        }
+                    });
+                },
+                loadBMap(ak, callback) {
+                    if(typeof BMap !== 'undefined') {
+                        callback();
+                        return true;
+                    }
+                    var script = document.createElement('script');
+                    script.type = 'text/javascript';
+                    script.src = 'https://api.map.baidu.com/api?v=3.0&ak=' + ak + '&callback=onBMapCallback';
+                    document.head.appendChild(script);
+                    script.onload = function() {
+                        var tmp = function() {
+                            if(typeof BMap !== 'undefined' && typeof BMap.Geolocation != 'undefined') {
+                                callback();
+                            }else {
+                                setTimeout(tmp, 2000);
+                            }
+                        };
+                        tmp();
+                    }
+                },
+                handleChangeCity:function(val){
+                    var index;
+                    for(var i=0;i<this.Allprovice.length;i++){
+                        if(this.jtszd.myprovice==this.Allprovice[i].name){
+                            index = i
+                        };
+                    }
+                    if(index!=undefined){
+                        this.Allcity = this.Allprovice[index].city;
+
+                    }
+                    this.jtszd.mycity ='';
+                    this.jtszd.myarea ='';
+                    vm.info.province = this.jtszd.myprovice;
+
+                },
+                handleChangeArea:function(val){
+
+                    var index;
+                    for(var i=0;i<this.Allcity.length;i++)
+                    {
+                        if(this.jtszd.mycity==this.Allcity[i].name) index=i;
+                    }
+                    if(index!=undefined){
+                        this.Allarea = this.Allcity[index].districtAndCounty;
+                    }
+                    vm.info.area = this.jtszd.myprovice + ' ' + this.jtszd.mycity;
+                    vm.info.city =this.jtszd.mycity;
+
+                },
+                handleChange:function(val){
+                    vm.info.area = this.jtszd.myprovice + ' ' + this.jtszd.mycity + ' '+this.jtszd.myarea
+
+                },
+                handleChangeCityt:function(val){
+                    var index;
+                    for(var i=0;i<this.Allprovice.length;i++){
+                        if(this.info.jnmddsheng==this.Allprovice[i].name){
+                            index = i
+                        }
+                    }
+                    if(index!=undefined){
+                        this.Allcityt = this.Allprovice[index].city;
+
+                    }
+                    this.info.jnmddshi ='';
+                    this.info.jnmddqu ='';
+                    // vm.info.jnmddsheng = this.jtszd.myprovice;
+
+                },
+                handleChangeAreat:function(val){
+
+                    var index;
+                    for(var i=0;i<this.Allcityt.length;i++)
+                    {
+                        if(this.info.jnmddshi==this.Allcityt[i].name) {
+                            index=i;
+                        }
+                    }
+                    if(index!=undefined){
+                        this.Allareat = this.Allcityt[index].districtAndCounty;
+                    }
+                    this.info.jnmddqu = '';
+
+                },
+
+                confirm:function() {
+
+                    if(this.hasFlag == 1) {
+                        wapalert('每天只能填报一次，你已提交过');
+                        return false;
+                    }
+                    if(!this.valid(this.info)) {
+                        return false;
+                    }
+
+                    var defStr = '每天只能填报一次，请确认信息是否全部正确？';
+
+                    var tmpArr = [];
+
+
+                    if(this.sfzgn == 0) {
+                        tmpArr.push('您已选择今日<font style="color:red;">在境外</font>（You are outside Chinese Mainland today）');
+                    }
+
+                    var map = {
+                            2: '红',
+                            3: '黄',
+                            4: '橙'
+                        };
+                        var emap = {
+                            2: 'Red',
+                            3: 'Yellow',
+                            4: 'Orange'
+                        };
+                        if(this.info.sqhzjkkys > 1 && this.info.sqhzjkkys != 5) {
+                            tmpArr.push('您已选择领取的健康码为<font style="color:red;">'+map[parseInt(this.info.sqhzjkkys)] + '码</font>(Your health code is '+emap[parseInt(this.info.sqhzjkkys)]+' code today)');
+                        }
+
+                    if(tmpArr.length > 0) {
+                        defStr = tmpArr.join('<br >');
+                    }
+
+                    wapconfirm(defStr, '确认提交', '再看看', function () {
+                        vm.save();
+                    });
+                },
+                setSfzgn:function(flag) {
+                    if(flag == 0) {
+                        this.info.area = '国外';
+                        this.info.city = '国外';
+                        this.info.province = '国外';
+                    }else {
+                        var tmp = $.isEmptyObject(this.oldInfo);
+                        this.info.area = '';
+                        this.info.city = '';
+                        this.info.province = '';
+                    }
+                    this.sfzgn = flag;
+                },
+                setSfzx:function(flag) {
+                    if(flag) {
+                        this.setSfzgn(1);
+                    }
+                    this.info.sfzx = flag;
+                },
+                save:function() {
+
+                    try {
+                        if(!this.valid(this.info)) {
+                            return false;
+                        }
+                        var _this = this;
+                        _this.info.fxyy = "";
+                        if(_this.info.sfzx == 1 || _this.info.province == '国外' ){
+                            _this.info.ismoved == 0;
+                        }
+                        if(_this.info.sfzx != 1) {
+                            _this.info.campus = '';
+                        }
+                        if(_this.info.tw == 0) {
+                            _this.info.sfyqjzgc = 0;
+                        }
+                        if(_this.info.sfcxtz == 0) {
+                            _this.info.sfyyjc = 0;
+                        }
+                        if(_this.info.sfyyjc == 0) {
+                            _this.info.jcjgqr = 0;
+                            _this.info.jcjg = '';
+                        }
+
+                        if(_this.info.sfjcbh == 0) {
+                            _this.info.jcbhlx = '';
+                            _this.info.jcbhrq = '';
+                        }
+
+                        if(_this.info.sfjcqz == 0) {
+                            _this.info.jcqzrq = "";
+                        }
+
+                        if(_this.info.sfcyglq == 0) {
+                            _this.info.gllx = '';
+                            _this.info.glksrq = '';
+                        }
+
+                        if(_this.info.zgfx14rfh == 0) {
+                            _this.info.zgfx14rfhdd = '';
+                            _this.info.zgfx14rfhsj = '';
+                        }
+
+                        if(_this.info.sfcxzysx ==0) {
+                            _this.info.qksm = '';
+                            _this.info.remark = "";
+                        }
+                        if(_this.sfzgn==1){
+                            if(_this.info.sfymqjczrj === '') {
+                                _this.info.sfymqjczrj = 0;
+                            } 
+                            _this.info.gwszgzcs="";
+                            _this.info.szgj="";
+                            // _this.info.address= '';
+                            // _this.info.geo_api_info='';
+
+                            _this.info.zjdfgj = '';
+                            _this.info.sfyrjjh = 0;
+                            _this.info.cfgj='';
+                            _this.info.tjgj='';
+                            _this.info.nrjrq=0;
+                            _this.info.rjka='';
+                            _this.info.jnmddsheng='';
+                            _this.info.jnmddshi='';
+                            _this.info.jnmddqu='';
+                            _this.info.jnmddxiangxi='';
+                            _this.info.rjjtfs='';
+                            _this.info.rjjtgjbc='';
+                            _this.info.jnjtfs='';
+                            _this.info.jnjtgjbc='';
+
+                        }else{
+                            _this.info.sfymqjczrj = 0;
+                            if(_this.info.sfyrjjh == 0) {
+                                _this.info.cfgj='';
+                                _this.info.tjgj='';
+                                _this.info.nrjrq=0;
+                                _this.info.rjka='';
+                                _this.info.jnmddsheng='';
+                                _this.info.jnmddshi='';
+                                _this.info.jnmddqu='';
+                                _this.info.jnmddxiangxi='';
+                                _this.info.rjjtfs='';
+                                _this.info.rjjtgjbc='';
+                                _this.info.jnjtfs='';
+                                _this.info.jnjtgjbc='';
+                            }
+                        }
+
+                        if(_this.ipCtrl){
+                            _this.info.address= '';
+                            // _this.info.geo_api_info='';
+                        }
+                        if(_this.ajaxLock) {
+                            wapalert('数据提交中');
+                            return false;
+                        }
+                        _this.ajaxLock = true;
+                        waploading('', '数据提交中, 请稍候...');
+                        $.ajax({
+                            url: '/ncov/wap/default/save',
+                            type: 'POST',
+                            dataType: 'JSON',
+                            data: _this.info,
+                            success: function (resp) {
+                                _this.ajaxLock = false;
+                                waploading('hide');
+                                if(resp.e == 0) {
+                                    _this.show=true;
+
+                                    // wapalert('提交信息成功');
+                                    _this.hasFlag = 1;
+                                    _this.btnmsg="您已提交信息 You have submitted";
+                                }else {
+                                    wapalert(resp.m);
+                                    _this.change();
+                                }
+                            },
+                            error: function () {
+                                _this.ajaxLock = false;
+                                waploading('hide');
+                                wapalert('系统繁忙，请稍后再试！');
+                                _this.change();
+                            }
+                        });
+                    } catch (e) {
+                        alert(e);
+                    }
+
+
+                },
+                valid:function(info) {
+
+                    if(info.sfzx===''){
+                        wapalert('请选择今日是否在校', false, function () {
+                            $("[name=sfzx]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+
+                    if(info.sfzx == 1 && info.campus === '') {
+                        wapalert('请选择今日所在校区', false, function () {
+                            $("[name=campus]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+                    if(info.sfzx != 1 && info.sfymqjczrj === '') {
+                        wapalert('请选择同住人员当天是否存在发热症状、红黄码状态或者14天内从境外返校情况', false, function () {
+                            $("[name=sfymqjczrj]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+
+                    if(info.tw !=='1' && info.tw !=='0') {
+                        wapalert('请选择今日是否发热', false, function () {
+                            $("[name=tw]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+
+                    if(this.sfzgn == 1 && info.sfzx == 0 && this.info.ismoved == '') {
+                        wapalert('请选择是否有离开校区所在城市的安排', false, function () {
+                            $("[name=ismoved]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+
+
+                    if(info.sfcxzysx == 1 && info.qksm== '') {
+                        wapalert('请选择情况说明', false, function () {
+                            $("[name=qksm]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+                    if(info.sqhzjkkys== '') {
+                        wapalert('请选择今日校区所在地健康码的颜色', false, function () {
+
+                            $("[name=sqhzjkkys]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+
+                    if(this.sfzgn==1 && info.area == '' && !this.ipCtrl) {
+                        wapalert('未获取到地理位置', false, function () {
+                            $("[name=area]").focus();
+                            $("[name=area]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+                    if(this.sfzgn==1 && this.Allarea.length==0 && this.ipCtrl && (this.jtszd.myprovice=='' || this.jtszd.mycity=='')) {
+                        wapalert('请选取地理位置', false, function () {
+                            $("[name=ip]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+                    if(this.Allarea.length>0 && this.ipCtrl && (this.jtszd.myprovice=='' || this.jtszd.mycity=='' || this.jtszd.myarea=='')) {
+                        wapalert('请选取地理位置', false, function () {
+                            $("[name=ip]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+
+                    if(this.sfzgn==0 && $.trim(info.szgjcs) == '' && !this.ipCtrl1) {
+                        wapalert('未获取到地理位置', false, function () {
+                            $("[name=szgjcs]").focus();
+                            $("[name=dwszgj]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+
+                    if(this.sfzgn==0 && this.info.szgj=='' && this.ipCtrl1){
+
+                        wapalert('请选择所在地区/国家', false, function () {
+                            // $("[name=szgj]").focus();
+                            $("[name=gwszgzcs]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+                    if(this.sfzgn==0 && this.info.gwszgzcs=='' && this.ipCtrl1){
+
+                        wapalert('请填写所在具体区域/国家城市', false, function () {
+                            $("[name=gwszgzcs]").focus();
+                            $("[name=gwszgzcs]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+
+
+                    if(this.sfzgn == 0 && info.zjdfgj === '') {
+                        wapalert('请填写近14日到访过的国家/地区', false, function () {
+                            $("[name=zjdfgj]").focus();
+                            $("[name=zjdfgj]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+
+                    if(this.sfzgn == 0 && info.sfyrjjh == 1 && info.cfgj == '') {
+                        wapalert('请选择国家或地区', false, function () {
+                            $("[name=cfgj]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+
+                    if(this.sfzgn == 0 && info.sfyrjjh == 1 && info.tjgj == '') {
+                        wapalert('请填写途经国家', false, function () {
+                            $("[name=tjgj]").focus();
+                            $("[name=tjgj]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+
+                    if(this.sfzgn == 0 && info.sfyrjjh == 1 && info.nrjrq == '') {
+                        wapalert('请选择拟入境日期', false, function () {
+                            $("[name=nrjrq]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+
+                    if(this.sfzgn == 0 && info.sfyrjjh == 1 && info.rjka == '') {
+                        wapalert('请填写入境口岸', false, function () {
+                            $("[name=rjka]").focus();
+                            $("[name=rjka]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+                    if(this.sfzgn == 0 && info.sfyrjjh == 1 && (info.jnmddsheng == '' || info.jnmddshi == '' || info.jnmddqu == '')) {
+                        wapalert('请选择境内目的地', false, function () {
+                            $("[name=jnmdd]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+
+                    if(this.sfzgn == 0 && info.sfyrjjh == 1 && info.jnmddxiangxi == '') {
+                        wapalert('请填写境内目的地详细地址', false, function () {
+                            $("[name=jnmdd]").focus();
+                            $("[name=jnmdd]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+                    if(this.sfzgn == 0 && info.sfyrjjh == 1 && info.rjjtfs == '') {
+                        wapalert('请选择入境交通方式', false, function () {
+                            $("[name=rjjtfs]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+
+                    if(this.sfzgn == 0 && info.sfyrjjh == 1 && info.rjjtfs == 4 && info.rjjtfs1 == '') {
+                        wapalert('请填写其他入境交通方式', false, function () {
+                            $("[name=rjjtfs1]").focus();
+                            $("[name=rjjtfs]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+
+                    if(this.sfzgn == 0 && info.sfyrjjh == 1 && info.rjjtgjbc == '') {
+                        wapalert('请填写入境交通工具', false, function () {
+                            $("[name=rjjtgjbc]").focus();
+                            $("[name=rjjtgjbc]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+                    if(this.sfzgn == 0 && info.sfyrjjh == 1 && info.jnjtfs == '') {
+                        wapalert('请选择境内交通方式', false, function () {
+                            $("[name=jnjtfs]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+
+                    if(this.sfzgn == 0 && info.sfyrjjh == 1 && info.jnjtfs == 4 && info.jnjtfs1 == '') {
+                        wapalert('请填写其他境内交通方式', false, function () {
+                            $("[name=jnjtfs1]").focus();
+                            $("[name=jnjtfs]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+
+                    if(this.sfzgn == 0 && info.sfyrjjh == 1 && info.jnjtgjbc == '') {
+                        wapalert('请填写境内交通工具', false, function () {
+                            $("[name=jnjtgjbc]").focus();
+                            $("[name=jnjtgjbc]").get(0).scrollIntoView(false);
+                        });
+                        return false;
+                    }
+
+
+                    if(this.info.sfqrxxss != 1) {
+                        wapalert('请检查填写信息是否如实，并勾选"本人承诺', false, function () {
+                            $("[name=sfqrxxss]").get(0).scrollIntoView();
+                        });
+                        return false;
+                    }
+                    if(this.info.verifyCode == '') {
+                        wapalert('请输入验证码', false, function () {
+                            $("[name=verifyCode]").get(0).scrollIntoView();
+                        });
+                        return false;
+                    }
+
+                    return true;
+                },
+                locatComplete:function(res) {
+                    waploading('hide');
+                    vm.info.geo_api_info = JSON.stringify(res);
+                    vm.info.address = res.formattedAddress;
+                    vm.info.area = res.addressComponent.province + ' ' + res.addressComponent.city + ' ' + res.addressComponent.district;
+                    vm.info.province = res.addressComponent.province;
+                    vm.info.city = res.addressComponent.city;
+                    if($.trim(vm.info.city) == '' && ['杭州市','上海市','重庆市','天津市'].indexOf(vm.info.province) > -1) {
+                        vm.info.city = vm.info.province;
+                    }
+                },
+                locatError:function(res) {
+                    vm.info.area = '';//JSON.stringify(res);
+                    waploading('hide');
+                    vm.info.geo_api_info = JSON.stringify(res);
+                    vm.info.address = '';
+                    vm.info.province = '';
+                    vm.info.city = '';
+                    $.ajax({
+                        url: '/ncov/wap/default/save-geo-error',
+                        dataType: 'JSON',
+                        type: 'POST',
+                        data: {error: JSON.stringify(res)},
+                        success:function(res) {
+
+                        },
+                        error:function() {
+
+                        }
+                    });
+                    wapalert('获取位置信息失败，请检查定位服务是否开启！');
+                    // vm.ipCtrl = true;
+                },
+                getLocation:function(flag) {
+                    mapObj = new AMap.Map('iCenter');
+                    mapObj.plugin('AMap.Geolocation', function () {
+                        geolocation = new AMap.Geolocation({
+                            enableHighAccuracy: true,//是否使用高精度定位，默认:true
+                            timeout: 10000,          //超过10秒后停止定位，默认：无穷大
+                            maximumAge: 0,           //定位结果缓存0毫秒，默认：0
+                            convert: true,           //自动偏移坐标，偏移后的坐标为高德坐标，默认：true
+                            showButton: true,        //显示定位按钮，默认：true
+                            buttonPosition: 'LB',    //定位按钮停靠位置，默认：'LB'，左下角
+                            buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+                            panToLocation: false,     //定位成功后将定位到的位置作为地图中心点，默认：true
+                            zoomToAccuracy:false      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+                        });
+                        mapObj.addControl(geolocation);
+                        !flag && waploading('show', '获取地理位置中...');
+                        geolocation.getCurrentPosition();
+                        AMap.event.addListener(geolocation, 'complete', vm.locatComplete);//返回定位信息
+                        AMap.event.addListener(geolocation, 'error', vm.locatError);      //返回定位出错信息
+                    });
+                },
+                initSelect: function () {
+                    var self = this;
+                    $('#szgj').select2({
+                        language: "zh-CN",
+                        width: "100%",
+                    });
+
+                    $('#szgj').on('select2:open', function(element) {
+                        $('.select2-search__field').attr('placeholder', "输入国家或地区")
+                    });
+                    $("#szgj").on("select2:select", function (e) {
+                        self.info.szgj = $(e.currentTarget).val();
+                    });
+
+                    $('#cfgj').select2({
+                        language: "zh-CN",
+                        width: "100%",
+                    });
+
+                    $('#cfgj').on('select2:open', function(element) {
+                        $('.select2-search__field').attr('placeholder', "输入国家或地区")
+                    });
+                    $("#cfgj").on("select2:select", function (e) {
+                        self.info.cfgj = $(e.currentTarget).val();
+                    });
+                }
+            }
+        });
+        Vue.nextTick(function () {
+            vm.initSelect();
+        });
+        if(vm.info.area) {
+            vm.getLocation(1);
+        }
+        if(window.location.href.indexOf('debug') !== -1){
+            var vConsole = new VConsole();
+        }
+    </script>
+                <div id="gallery" class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="pswp__bg"></div>
+
+            <div class="pswp__scroll-wrap">
+
+                <div class="pswp__container">
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                </div>
+
+                <div class="pswp__ui pswp__ui--hidden">
+
+                    <div class="pswp__top-bar">
+
+                        <div class="pswp__counter"></div>
+
+                        <button class="pswp__button pswp__button--close"></button>
+
+                        <div class="pswp__preloader">
+                            <div class="pswp__preloader__icn">
+                                <div class="pswp__preloader__cut">
+                                    <div class="pswp__preloader__donut"></div>
                                 </div>
                             </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
+                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                        <div class="pswp__share-tooltip">
+
+                        </div>
+                    </div>
+
+                    <button class="pswp__button pswp__button--arrow--left"></button>
+                    <button class="pswp__button pswp__button--arrow--right"></button>
+                    <div class="pswp__caption">
+                        <div class="pswp__caption__center">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </body>
+</html>
