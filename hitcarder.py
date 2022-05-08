@@ -228,12 +228,12 @@ def main(username, password, cookie):
 if __name__ == "__main__":
     username = os.environ['USERNAME']
     password = os.environ['PASSWORD']
-
-    ret, msg = main(username, password)
+    cookie = os.environ['COOKIE']
+    ret, msg = main(username, password, cookie)
     print(ret, msg)
     if ret == 1:
         time.sleep(5)
-        ret, msg = main(username, password)
+        ret, msg = main(username, password, cookie)
         print(ret, msg)
 
     dingtalk_token = os.environ.get('DINGTALK_TOKEN')
