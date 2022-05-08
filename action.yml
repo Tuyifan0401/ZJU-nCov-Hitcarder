@@ -43,6 +43,6 @@ runs:
       run: |
         cd ${{ github.action_path }}
         pip install -r ./requirements.txt
-        pip3 install ddddocr
+        pip3 install ddddocr==1.1.0
         python3 ./hitcarder.py
       shell: bash
