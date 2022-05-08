@@ -24,9 +24,10 @@ class HitCarder(object):
         sess: (requests.Session) 统一的session
     """
 
-    def __init__(self, username, password):
+    def __init__(self, username, password, cookie):
         self.username = username
         self.password = password
+        self.cookie = cookie
         self.login_url = "https://zjuam.zju.edu.cn/cas/login?service=https%3A%2F%2Fhealthreport.zju.edu.cn%2Fa_zju%2Fapi%2Fsso%2Findex%3Fredirect%3Dhttps%253A%252F%252Fhealthreport.zju.edu.cn%252Fncov%252Fwap%252Fdefault%252Findex"
         self.base_url = "https://healthreport.zju.edu.cn/ncov/wap/default/index"
         self.save_url = "https://healthreport.zju.edu.cn/ncov/wap/default/save"
@@ -99,7 +100,7 @@ class HitCarder(object):
 
     def get_captcha(self):
         """Get CAPTCHA code"""
-        cookie_dict = {'eai-sess': 'kvoo9gjr07ukbsrbs4sl0991a5'}
+        cookie_dict = {'eai-sess': self.cookie}
         self.sess.cookies = requests.cookies.cookiejar_from_dict(cookie_dict)
         resp = self.sess.get(self.captcha_url)
         captcha = self.ocr.classification(resp.content)
@@ -179,7 +180,7 @@ class DecodeError(Exception):
     pass
 
 
-def main(username, password):
+def main(username, password, cookie):
     """Hit card process
 
     Arguments:
@@ -187,7 +188,7 @@ def main(username, password):
         password: (str) 浙大统一认证平台密码
     """
 
-    hit_carder = HitCarder(username, password)
+    hit_carder = HitCarder(username, password, cookie)
     print("[Time] %s" % datetime.datetime.now().strftime(
         '%Y-%m-%d %H:%M:%S'))
     print(datetime.datetime.utcnow() + datetime.timedelta(hours=+8))

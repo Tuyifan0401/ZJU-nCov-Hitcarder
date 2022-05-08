@@ -13,6 +13,9 @@ inputs:
   password:
     description: zju account password.
     required: true
+  cookie:
+    description: zju account cookie.
+    required: true
   dingtalk_token:
     description: dingtalk_token.
     required: false
@@ -33,6 +36,7 @@ runs:
       env:
         USERNAME: ${{ inputs.username }}
         PASSWORD: ${{ inputs.password }}
+        COOKIE: ${{ inputs.cookie }}
         DINGTALK_TOKEN: ${{ inputs.dingtalk_token }}
         SERVERCHAN_KEY: ${{ inputs.serverchan_key }}
         PUSHPLUS_TOKEN: ${{ inputs.pushplus_token }}
