@@ -67,16 +67,6 @@
                                     </div>
                                 </div>
                             </li>
-
-                                                        <li>
-                                <div name="internship" class="radio"><span>今日是否进行实习或实践。Are you doing an internship today?<i class="icon iconfont icon-shuoming"></i><em></em></span>
-                                    <div>
-                                        <div @click="info.internship=2"><span :class="{active: info.internship==2}"><i></i></span> <span>校内实习 On-campus internship</span></div>
-                                        <div @click="info.internship=3"><span :class="{active: info.internship==3}"><i></i></span> <span>校外实习Off-campus internship</span></div>
-                                        <div @click="info.internship=1"><span :class="{active: info.internship==1}"><i></i></span> <span>否 No</span></div>
-                                    </div>
-                                </div>
-                            </li>
                             
                             <li v-show="info.sfzx==='0' && !ipCtrl1 && sfzgn == 0" name="dwszgj">
                                 <div class="text" @click="mapInit()">
