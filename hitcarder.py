@@ -141,31 +141,20 @@ class HitCarder(object):
         new_info['szgjcs'] = ""
         new_info['zgfx14rfhsj'] = ""
         new_info['geo_api_info'] = old_info['geo_api_info'] # 定位
-        # new_info['address'] = "浙江省杭州市西湖区"
         new_info['address'] = old_info['address']
-        # new_info["area"] = "浙江省 杭州市 西湖区"
         new_info['area'] = old_info['area']
-        new_info["city"] = new_info["area"].split(' ')[1]
-        # new_info['city'] = old_info['city']
+        new_info['city'] = old_info['city']
         new_info['ismoved'] = 0
         new_info['campus'] = old_info['campus']
         new_info['sfzx'] = old_info['sfzx'] # 在校
         new_info['sfymqjczrj'] = old_info['sfymqjczrj'] # 入境
         new_info['sfqrxxss'] = 1 # 属实
-        # new_info['verifyCode'] = self.get_captcha()
+        new_info['verifyCode'] = self.get_captcha()
 
         self.info = new_info
         # print(json.dumps(self.info))
         return new_info
-    
-    def get_form(self):
-        """Get hitcard form, compare with old form """
-        res = self.sess.get(self.base_url)
-        html = res.content.decode()
 
-        new_form = re.findall(r'<ul>[\s\S]*?</ul>', html)[0]
-        return new_form
-    
     def _rsa_encrypt(self, password_str, e_str, M_str):
         password_bytes = bytes(password_str, 'ascii')
         password_int = int.from_bytes(password_bytes, 'big')
@@ -214,11 +203,6 @@ def main(username, password, cookie):
     try:
         ret = hit_carder.check_form()
         if not ret:
-            new_form = hit_carder.get_form()
-
-            with open('form.txt', 'w') as f:
-                f.write(new_form)
-
             return 2, '打卡信息已改变，请手动打卡'
     except Exception as err:
         return 1, '获取信息失败，请手动打卡: ' + str(err)
