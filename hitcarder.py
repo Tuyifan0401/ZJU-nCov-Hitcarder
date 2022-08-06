@@ -140,16 +140,22 @@ class HitCarder(object):
         # form change
         new_info['szgjcs'] = ""
         new_info['zgfx14rfhsj'] = ""
-        new_info['geo_api_info'] = old_info['geo_api_info'] # 定位
-        new_info['address'] = old_info['address']
-        new_info['area'] = old_info['area']
-        new_info['city'] = old_info['city']
+        # new_info['geo_api_info'] = old_info['geo_api_info'] # 定位
+        new_info["address"] = "浙江省宁波市余姚市"
+        new_info["area"] = "浙江省 宁波市 余姚市"
+        new_info["province"] = new_info["area"].split(' ')[0]
+        new_info["city"] = new_info["area"].split(' ')[1]
+
+        #new_info['address'] = old_info['address']
+        #new_info['area'] = old_info['area']
+        #new_info['city'] = old_info['city']
         new_info['ismoved'] = 0
-        new_info['campus'] = old_info['campus']
-        new_info['sfzx'] = old_info['sfzx'] # 在校
+        #new_info['campus'] = old_info['campus']
+        #new_info['sfzx'] = old_info['sfzx'] # 在校
+        new_info['sfzx'] = 0
         new_info['sfymqjczrj'] = old_info['sfymqjczrj'] # 入境
         new_info['sfqrxxss'] = 1 # 属实
-        new_info['verifyCode'] = self.get_captcha()
+        #new_info['verifyCode'] = self.get_captcha()
 
         self.info = new_info
         # print(json.dumps(self.info))
