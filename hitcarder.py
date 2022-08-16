@@ -141,8 +141,8 @@ class HitCarder(object):
         new_info['szgjcs'] = ""
         new_info['zgfx14rfhsj'] = ""
         # new_info['geo_api_info'] = old_info['geo_api_info'] # 定位
-        new_info["address"] = "浙江省宁波市余姚市"
-        new_info["area"] = "浙江省 宁波市 余姚市"
+        new_info["address"] = "浙江省杭州市西湖区"
+        new_info["area"] = "浙江省 杭州市 西湖区"
         new_info["province"] = new_info["area"].split(' ')[0]
         new_info["city"] = new_info["area"].split(' ')[1]
 
@@ -152,10 +152,13 @@ class HitCarder(object):
         new_info['ismoved'] = 0
         #new_info['campus'] = old_info['campus']
         #new_info['sfzx'] = old_info['sfzx'] # 在校
-        new_info['sfzx'] = 0
+        new_info['sfzx'] = 1
         new_info['sfymqjczrj'] = old_info['sfymqjczrj'] # 入境
         new_info['sfqrxxss'] = 1 # 属实
         #new_info['verifyCode'] = self.get_captcha()
+        
+        # 2022.08.16
+        #new_info['internship'] = 3  # 今日是否进行实习或实践
 
         self.info = new_info
         # print(json.dumps(self.info))
@@ -222,9 +225,9 @@ def main(username, password, cookie):
         res = hit_carder.post()
         print(res)
         if str(res['e']) == '0':
-            return 0, '打卡成功'
+            return 0, '徒徒打卡成功'
         elif str(res['m']) == '今天已经填报了':
-            return 0, '今天已经打卡'
+            return 0, '徒徒今天已经打卡'
         else:
             return 1, '打卡失败'
     except:
